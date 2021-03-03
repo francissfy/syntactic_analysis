@@ -103,8 +103,10 @@ class SynTree:
         return nodes_to_root[-1].tag
 
     def preced_token(self, widx: int) -> int:
-        # FIXME for the leading word, regard it's precedding is next word
-        if widx == 0:
+        # FIXME if widx==0, return 1; if only one elem in token, return 0
+        if len(self.tokens) == 1:
+            return 0
+        elif widx == 0:
             return 1
         else:
             return widx - 1
